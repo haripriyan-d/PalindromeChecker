@@ -1,8 +1,9 @@
 /**
- * UseCase3PalindromeCheckerApp
+ * UseCase4PalindromeCheckerApp
  *
  * This class demonstrates how to check whether a string
- * is a palindrome by reversing it using a for loop.
+ * is a palindrome using a character array and the
+ * two-pointer technique.
  *
  * @author Student
  * @version 1.0
@@ -19,16 +20,27 @@ public class PalindromeChecker {
         // Original string
         String word = "madam";
 
-        // Variable to store reversed string
-        String reversed = "";
+        // Convert string to character array
+        char[] characters = word.toCharArray();
 
-        // Reverse the string using a loop
-        for (int i = word.length() - 1; i >= 0; i--) {
-            reversed = reversed + word.charAt(i);
+        // Two-pointer approach
+        int start = 0;
+        int end = characters.length - 1;
+
+        boolean isPalindrome = true;
+
+        // Compare characters from both ends
+        while (start < end) {
+            if (characters[start] != characters[end]) {
+                isPalindrome = false;
+                break;
+            }
+            start++;
+            end--;
         }
 
-        // Compare original and reversed strings
-        if (word.equals(reversed)) {
+        // Display result
+        if (isPalindrome) {
             System.out.println("The word \"" + word + "\" is a Palindrome.");
         } else {
             System.out.println("The word \"" + word + "\" is NOT a Palindrome.");
