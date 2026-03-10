@@ -1,8 +1,8 @@
 /**
- * PalindromeCheckerApp
+ * UseCase2PalindromeCheckerApp
  *
- * This class represents the entry point of the Palindrome Checker application.
- * It displays the application name and version information when the program starts.
+ * This class demonstrates checking whether a hardcoded string
+ * is a palindrome and printing the result to the console.
  *
  * @author Student
  * @version 1.0
@@ -17,11 +17,17 @@ public class PalindromeChecker {
      */
     public static void main(String[] args) {
 
-        System.out.println("=====================================");
-        System.out.println("        Palindrome Checker App       ");
-        System.out.println("        Version: 1.0                 ");
-        System.out.println("=====================================");
-        System.out.println("Welcome! This application checks whether a given string is a palindrome.");
-        System.out.println("Application started successfully.");
+        // Hardcoded string
+        String word = "madam";
+
+        // Reverse the string
+        String reversed = new StringBuilder(word).reverse().toString();
+
+        // Check if the string is a palindrome
+        if (word.equals(reversed)) {
+            System.out.println("The word \"" + word + "\" is a Palindrome.");
+        } else {
+            System.out.println("The word \"" + word + "\" is NOT a Palindrome.");
+        }
     }
 }
