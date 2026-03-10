@@ -9,33 +9,30 @@ public class PalindromeChecker {
         System.out.print("Enter a string: ");
         String input = sc.nextLine();
 
-        // Convert to lowercase and remove spaces (optional improvement)
+        // Optional: ignore spaces and case
         input = input.replaceAll("\\s+", "").toLowerCase();
 
-        Queue<Character> queue = new LinkedList<>();
-        Stack<Character> stack = new Stack<>();
+        Deque<Character> deque = new ArrayDeque<>();
 
-        // Enqueue and Push characters
+        // Insert characters into deque
         for (int i = 0; i < input.length(); i++) {
-            char ch = input.charAt(i);
-            queue.add(ch);     // Enqueue (FIFO)
-            stack.push(ch);    // Push (LIFO)
+            deque.addLast(input.charAt(i));
         }
 
         boolean isPalindrome = true;
 
-        // Compare dequeue and pop
-        while (!queue.isEmpty()) {
-            char fromQueue = queue.remove();  // Dequeue
-            char fromStack = stack.pop();     // Pop
+        // Compare front and rear characters
+        while (deque.size() > 1) {
+            char front = deque.removeFirst();
+            char rear = deque.removeLast();
 
-            if (fromQueue != fromStack) {
+            if (front != rear) {
                 isPalindrome = false;
                 break;
             }
         }
 
-        // Result
+        // Display result
         if (isPalindrome) {
             System.out.println("The given string is a Palindrome.");
         } else {
