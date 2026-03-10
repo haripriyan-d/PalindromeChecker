@@ -1,13 +1,15 @@
 /**
- * UseCase4PalindromeCheckerApp
+ * UseCase5PalindromeCheckerApp
  *
- * This class demonstrates how to check whether a string
- * is a palindrome using a character array and the
- * two-pointer technique.
+ * This class demonstrates palindrome checking using
+ * a Stack data structure (LIFO principle).
  *
  * @author Student
  * @version 1.0
  */
+
+import java.util.Stack;
+
 public class PalindromeChecker {
 
     /**
@@ -20,27 +22,22 @@ public class PalindromeChecker {
         // Original string
         String word = "madam";
 
-        // Convert string to character array
-        char[] characters = word.toCharArray();
+        // Create a stack to store characters
+        Stack<Character> stack = new Stack<>();
 
-        // Two-pointer approach
-        int start = 0;
-        int end = characters.length - 1;
-
-        boolean isPalindrome = true;
-
-        // Compare characters from both ends
-        while (start < end) {
-            if (characters[start] != characters[end]) {
-                isPalindrome = false;
-                break;
-            }
-            start++;
-            end--;
+        // Push characters of the string into the stack
+        for (int i = 0; i < word.length(); i++) {
+            stack.push(word.charAt(i));
         }
 
-        // Display result
-        if (isPalindrome) {
+        // Build reversed string by popping from stack
+        String reversed = "";
+        while (!stack.isEmpty()) {
+            reversed = reversed + stack.pop();
+        }
+
+        // Compare original and reversed string
+        if (word.equals(reversed)) {
             System.out.println("The word \"" + word + "\" is a Palindrome.");
         } else {
             System.out.println("The word \"" + word + "\" is NOT a Palindrome.");
