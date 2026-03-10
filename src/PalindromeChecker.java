@@ -1,8 +1,8 @@
 /**
- * UseCase2PalindromeCheckerApp
+ * UseCase3PalindromeCheckerApp
  *
- * This class demonstrates checking whether a hardcoded string
- * is a palindrome and printing the result to the console.
+ * This class demonstrates how to check whether a string
+ * is a palindrome by reversing it using a for loop.
  *
  * @author Student
  * @version 1.0
@@ -11,19 +11,23 @@ public class PalindromeChecker {
 
     /**
      * Main method – Entry point of the Java application.
-     * The JVM invokes this method when the program starts.
      *
      * @param args command-line arguments
      */
     public static void main(String[] args) {
 
-        // Hardcoded string
+        // Original string
         String word = "madam";
 
-        // Reverse the string
-        String reversed = new StringBuilder(word).reverse().toString();
+        // Variable to store reversed string
+        String reversed = "";
 
-        // Check if the string is a palindrome
+        // Reverse the string using a loop
+        for (int i = word.length() - 1; i >= 0; i--) {
+            reversed = reversed + word.charAt(i);
+        }
+
+        // Compare original and reversed strings
         if (word.equals(reversed)) {
             System.out.println("The word \"" + word + "\" is a Palindrome.");
         } else {
